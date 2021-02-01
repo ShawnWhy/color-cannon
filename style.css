@@ -1,0 +1,211 @@
+.slotMachine{
+  position:absolute;
+  top:200px;
+  left:100px;
+  height:200px;
+  width:400px;
+  border:3px solid skyblue;
+  display: flex;
+  text-align: center;
+}
+.slot{
+  position:relative;
+  width:33.3%;
+  height:100%;
+  float:left;
+  margin:auto;
+  border:2px solid skyblue;
+}
+
+.rotator{
+  height:50%;
+  width:35%;
+  border:3px solid darkblue;
+  margin:auto;
+  position:relative;
+  top:25%;
+}
+.screen{
+  height:33.3%;
+  background-color:red;
+
+}
+
+.cannon{
+  height:20px;
+  width:50px;
+  background-color: skyblue;
+  position:absolute;
+  top:300px;
+  left:500px;
+
+}
+
+.rotatorOne .screenOne{
+  background-color:darkred;
+
+}
+.rotatorOne .screenTwo{
+  background-color:pink;
+
+}
+.rotatorOne .screenThree{
+  background-color:darkred;
+
+}
+
+.rotatorTwo .screenOne{
+  background-color:darkgreen;
+
+}
+.rotatorTwo .screenTwo{
+  background-color:lightgreen;
+
+}
+.rotatorTwo .screenThree{
+  background-color:darkgreen;
+
+}
+
+.rotatorThree .screenOne{
+  background-color:darkblue;
+
+}
+.rotatorThree .screenTwo{
+  background-color:lightblue;
+
+}
+.rotatorThree .screenThree{
+  background-color:darkblue;
+
+}
+
+.bar{
+  position: absolute;
+  top:300px;
+  left:90px;
+  transform-origin: 15px 15px;
+  /* transform:rotate(20deg) */
+  z-index:2;
+  
+}
+.round{
+  height:30px;
+  width:30px;
+  border-radius:50%;
+  background-color: skyblue;
+}
+.stick{
+  height:60px;
+  width:10px;
+  background-color: skyblue;
+  position: relative;
+  left:10px;
+
+}
+.beam{
+  height:500px;
+  width:950px;
+  border-radius: 250px 0 0 250px;
+  border:skyblue solid 1px;
+  position: absolute;
+  left:550px;
+  top:50px;
+  border-right:0;
+  transform:scaleX(0);
+  transform-origin:left;
+  overflow: hidden;
+}
+body{
+  overflow: hidden;
+}
+.magazine{
+  position:absolute;
+  width:60px;
+  min-height:100px;
+  top:400px;
+  left:400px;
+  border:skyblue 3px solid;
+  text-align:center;
+}
+
+.fireButton{
+position: absolute;
+height:40px;
+width:80px;
+background-color:skyblue;
+border-radius:5px 5px 0 0 ;
+top:160px; 
+text-align:center;
+font-family:Arial, Helvetica, sans-serif;
+font-weight:bolder;
+color:tomato;
+transform-origin:bottom;
+
+}
+
+.fireButton  :hover{
+  color:yellow;
+}
+
+.invisibleP{
+  visibility: hidden;
+}
+
+
+
+.pallet{
+
+  height:30px;
+  width:100%;
+  border-radius: 3px;
+
+}
+.pallet:hover{
+  height:40px;
+  width:120%;
+}
+
+.palletJump{
+  animation:palletJump .1s both;
+  transform-origin: center;
+}
+
+@keyframes palletJump{
+  0%{transform:translateY(0px)}
+  90%{transform:translateY(5px)}
+
+  100%{transform:translateY(0px)}
+}
+.beamStreak{
+  height:2.5%;
+  width:100%;
+}
+
+.beamGrow{
+  animation:beamGrow 2s both
+}
+
+@keyframes beamGrow{
+  0%{transform:scaleX(0)}
+  100%{transform:scaleX(1)}
+}
+
+.veil{
+  position:fixed;
+  height:100%;
+  width:150%;
+  transform-origin:left;
+  transform:translateX(100%)
+}
+
+.veilOver{
+  animation:veilOver 2s both;
+}
+
+@keyframes veilOver{
+  0%{transform:translateX(100%)}
+  100%{transform:translateX(-20%)}
+  
+
+}
