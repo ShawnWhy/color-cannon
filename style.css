@@ -86,7 +86,7 @@
   left:90px;
   transform-origin: 15px 15px;
   /* transform:rotate(20deg) */
-  z-index:2;
+ 
   
 }
 .round{
@@ -136,6 +136,7 @@ width:80px;
 background-color:skyblue;
 border-radius:5px 5px 0 0 ;
 top:160px; 
+left:150px;
 text-align:center;
 font-family:Arial, Helvetica, sans-serif;
 font-weight:bolder;
@@ -183,7 +184,7 @@ transform-origin:bottom;
 }
 
 .beamGrow{
-  animation:beamGrow 2s both
+  animation:beamGrow .7s both
 }
 
 @keyframes beamGrow{
@@ -200,11 +201,11 @@ transform-origin:bottom;
 }
 
 .veilOver{
-  animation:veilOver 2s both;
+  animation:veilOver .5s both;
 }
 
 @keyframes veilOver{
-  0%{transform:translateX(100%)}
+  0%{transform:translateX(-100%)}
   100%{transform:translateX(-20%)}
   
 

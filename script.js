@@ -139,7 +139,7 @@ var fire = function(){
     if (arraylength>0){
         $('.beam').addClass('beamGrow')
         for(i=0;i<40;i++){
-            var rand = Math.floor(Math.random()*(arraylength-1))
+            var rand = Math.floor(Math.random()*arraylength)
             var color = $(colorArray[rand]).css('background-color')
             var beam = $('<div>');
             $(beam).addClass('beamStreak');
