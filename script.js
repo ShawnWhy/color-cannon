@@ -1,4 +1,5 @@
 
+var angleDirection = 1
 var currentColor={
     One:0,
     Two:0,
@@ -16,9 +17,9 @@ var producePallet = function(){
 
 var displayEmpty=function(){
     var Pallet = $('<div>');
-    $(Pallet).addClass('pallet');
+    $(Pallet).addClass('emptyPallet');
     $(Pallet).addClass('palletJump');
-    $(Pallet).html('NO AMMO')
+    $(Pallet).html('NO PALLET')
     $('.magazine').append(Pallet);
     setTimeout(() => {
         $('.magazine').html('');
@@ -130,11 +131,44 @@ e.stopPropagation();
 $(e.target).remove();
 })
 
+
+var crazyBeams = function(){
+    beamLength= beamArray.length;
+    var randColorNumber = Math.floor(Math.random()*beamLength);
+    var randHeight = Math.floor(Math.random()*10+1)
+    var randPosition=Math.floor(Math.random()*150-200)
+    var crazyBeam = $('<div>');
+    $(crazyBeam).css("background-color",beamArray[randColorNumber]);
+    $(crazyBeam).css("left",randPosition+'%');
+    $(crazyBeam).css("height",randHeight+'px');
+    
+    if(angleDirection<0){
+        angleDirection=1
+        $(crazyBeam).addClass('crazyRay1')
+        $('.container').append(crazyBeam)
+     
+        
+    }
+    else{
+        angleDirection=-1
+        $(crazyBeam).addClass('crazyRay2')
+        $('.container').append(crazyBeam)
+    }
+
+}
+
+var crazyBeamsMultiple = function(){
+    for(let i=0; i<40;i++){
+        setTimeout(() => {
+            crazyBeams()
+            
+        }, i*50);
+    }
+}
+
 var fire = function(){
-
-
     $('.beam').html('')
-
+    beamArray=[];
     var colorArray = $('.pallet');
     var arraylength = colorArray.length;
     if (arraylength>0){
@@ -162,13 +196,39 @@ var fire = function(){
                 $(frontBeam).css('animation',"frontStreak "+rand+'s both');
                 $('.veil').append(frontBeam);
             }
-        }, 500);
+            setTimeout(() => {
+                crazyBeamsMultiple();
+                
+            }, 500);
+            
+        }, 1000);
     }
     else{
         displayEmpty()
     }
 }
 
+var createHole = function(event){
+    holeLength= beamArray.length;
+    var randColor = Math.floor(Math.random()*holeLength)
+    var randSize = Math.random()*100+10;
+    randColor=beamArray[randColor];
+    var hole = $("<div>");
+    hole.addClass('hole');
+    hole.css('width',randSize +'px');
+    hole.css('height',randSize +'px');
+    hole.css('top',(event.clientY-randSize/2)+'px');
+    hole.css('left',(event.clientX-randSize/2)+'px');
+    hole.css("background-color",randColor);
+
+    $('.container').append(hole);
+
+}
+$(document).on("click",'.hole',event=>{
+    event.preventDefault();
+    event.stopPropagation();
+    location.reload();
+})
 
 
 
@@ -182,6 +242,44 @@ $('.fireButton').mousedown(function(e){
 $(document).mouseup(function(e){
     $('.fireButton').css('transform','scaleY(1)')
     $('.fireButton p').removeClass('invisibleP')
+
+})
+
+$(document).mouseover('.frontStreak',e=>{
+    
+    e.preventDefault();
+    e.stopPropagation();
+    beamLength=beamArray.length;
+    randColor=Math.floor(Math.random()*beamLength);
+    randColor=beamArray[randColor]
+    console.log(randColor);
+    $(e.target).css('background-color',randColor);
+})
+$(document).mouseover('.crazyRay1',e=>{
+    
+    e.preventDefault();
+    e.stopPropagation();
+    beamLength=beamArray.length;
+    randColor=Math.floor(Math.random()*beamLength);
+    randColor=beamArray[randColor]
+    console.log(randColor);
+    $(e.target).css('background-color',randColor);
+})
+$(document).mouseover('.crazyRay2',e=>{
+    
+    e.preventDefault();
+    e.stopPropagation();
+    beamLength=beamArray.length;
+    randColor=Math.floor(Math.random()*beamLength);
+    randColor=beamArray[randColor]
+    console.log(randColor);
+    $(e.target).css('background-color',randColor);
+})
+$(document).on('click','.veil',e=>{
+    e.preventDefault();
+    e.stopPropagation();
+    createHole(e);
+ 
 
 })
 

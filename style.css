@@ -173,10 +173,46 @@ transform-origin:bottom;
   border-radius: 3px;
 
 }
+.emptyPallet{
+
+  height:30px;
+  width:100%;
+  border-radius: 3px;
+
+}
 .pallet:hover{
   height:40px;
   width:120%;
 }
+
+.crazyRay1{
+  position:absolute;
+  width:300%;
+  animation:crazyRay1 .2s both;
+  
+
+}
+.crazyRay2{
+  position:absolute;
+  width:300%;
+  animation:crazyRay2 .2s both;
+  top:100%;
+  
+
+}
+
+@keyframes crazyRay1{
+  0%{ transform:rotate(45deg)translateX(-100%)}
+  100%{transform:rotate(45deg)translateX(0%)}
+}
+@keyframes crazyRay2{
+  0%{ transform:rotate(-45deg)translateX(-100%)}
+  100%{transform:rotate(-45deg)translateX(0%)}
+}
+
+
+
+
 
 .palletJump{
   animation:palletJump .1s both;
@@ -241,3 +277,30 @@ transform-origin:bottom;
   background-color: skyblue;
 }
 
+@keyframes shotOff{
+  0%{width:100%}
+  100%{width:0%}
+  
+
+}
+
+.hole{
+  border-radius: 50%;
+  position:fixed;
+  animation: hole .1s both 
+
+}
+
+@keyframes hole {
+  0%{transform:scale(.5)}
+  100%{transform:scale(1)}
+}
+
+.instruction{
+  position:absolute;
+  left:50px;
+  top:430px;
+  color:orange;
+  font-weight: bolder;
+
+}
