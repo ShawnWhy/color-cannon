@@ -103,18 +103,29 @@
   left:10px;
 
 }
+.beamContainer{
+  overflow: hidden;
+  position:absolute;
+  left:550px;
+  width:0px;
+  height:100%;
+  
+ 
+
+}
 .beam{
   height:500px;
-  width:950px;
+  width:1000px;
   border-radius: 250px 0 0 250px;
   border:skyblue solid 1px;
   position: absolute;
-  left:550px;
+  
   top:50px;
   border-right:0;
-  transform:scaleX(0);
+  /* transform:scaleX(0); */
   transform-origin:left;
   overflow: hidden;
+  
 }
 body{
   overflow: hidden;
@@ -182,14 +193,26 @@ transform-origin:bottom;
   height:2.5%;
   width:100%;
 }
+.frontStreak{
+  height:2.5%;
+  width:100%;
+
+}
+@keyframes frontStreak{
+  0%{width:0px}
+  100%{width:2000px}
+
+
+}
 
 .beamGrow{
-  animation:beamGrow .7s both
+  animation:beamGrow 1s both;
+  
 }
 
 @keyframes beamGrow{
-  0%{transform:scaleX(0)}
-  100%{transform:scaleX(1)}
+  0%{width:0px}
+  100%{width:1000px}
 }
 
 .veil{
@@ -201,7 +224,7 @@ transform-origin:bottom;
 }
 
 .veilOver{
-  animation:veilOver .5s both;
+  animation:veilOver .7s both;
 }
 
 @keyframes veilOver{
@@ -210,3 +233,11 @@ transform-origin:bottom;
   
 
 }
+
+.bulge{
+  height:40px;
+  width:40px;
+  border-radius:20px;
+  background-color: skyblue;
+}
+

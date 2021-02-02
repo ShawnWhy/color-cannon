@@ -4,6 +4,7 @@ var currentColor={
     Two:0,
     Three:0
 }
+var beamArray=[];
 var lever='off'
 var producePallet = function(){
     var Pallet = $('<div>');
@@ -137,23 +138,30 @@ var fire = function(){
     var colorArray = $('.pallet');
     var arraylength = colorArray.length;
     if (arraylength>0){
-        $('.beam').addClass('beamGrow')
+        $('.beamContainer').addClass('beamGrow')
         for(i=0;i<40;i++){
             var rand = Math.floor(Math.random()*arraylength)
             var color = $(colorArray[rand]).css('background-color')
             var beam = $('<div>');
             $(beam).addClass('beamStreak');
             $(beam).css('background-color',color);
-            $('.beam, .veil').append(beam)
+            $('.beam').append(beam)
+            beamArray.push(color);
             // $('.veil').append(beam)
-
-
-        }
+}
         setTimeout(() => {
-            $('.beam').removeClass('beamGrow')
-        }, 2000);
+            $('.beamContainer').removeClass('beamGrow')
+        }, 5000);
         setTimeout(() => {
             $('.veil').addClass('veilOver')
+            for(i=0;i<beamArray.length;i++){
+                var rand = Math.random()*5
+                var frontBeam = $("<div>");
+                $(frontBeam).addClass('frontStreak')
+                $(frontBeam).css('background-color',beamArray[i]);
+                $(frontBeam).css('animation',"frontStreak "+rand+'s both');
+                $('.veil').append(frontBeam);
+            }
         }, 500);
     }
     else{
